@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
 
 
@@ -39,6 +39,7 @@ const Total = (props)=>{
 
 
 const App = () => {
+  const [counter, setCounter] = useState(15);
   let course = {
     name: 'Half Stack application development',
     parts: [
@@ -56,6 +57,10 @@ const App = () => {
     }
   ]
 }
+  const handleClick = ()=>{
+    setCounter(counter + 1)
+  }
+
 
   return (
     <div>
@@ -66,8 +71,13 @@ const App = () => {
 
 
       <Total parts={course.parts}></Total>
+      <button onClick={handleClick}>plus+</button>
+      <button onClick={()=>{setCounter(0)}}>reset</button>
+      <p>Just a counter {counter}</p>
     </div>
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
